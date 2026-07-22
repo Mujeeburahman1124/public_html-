@@ -1,0 +1,31 @@
+# Ignore database configuration & credentials
+config.php
+config2.php
+
+# Ignore temporary export scripts
+export_schema.php
+extracted_index.php
+
+# Ignore environment files
+.env
+.env.local
+
+# Ignore large archives and backups
+msjobs.net.zip
+*.sql
+*.zip
+*.tar.gz
+
+# Ignore user uploads (dynamic assets uploaded by users)
+uploads/
+
+# Ignore log files
+*.log
+debug.log
+
+# Ignore node dependencies
+node_modules/
+
+# OS/System generated files
+.DS_Store
+Thumbs.db
