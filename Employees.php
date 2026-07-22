@@ -1,6 +1,6 @@
 <?php
 // DB connection
-$conn = new mysqli("localhost", "root", "", "job_portal"); // update DB info
+require_once __DIR__ . '/config.php'; // $conn = new mysqli("localhost", "root", "", "job_portal"); // update DB info
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }

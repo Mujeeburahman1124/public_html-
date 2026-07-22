@@ -1,4 +1,11 @@
 <?php
+require_once __DIR__ . '/config.php';
+$DB_HOST = $servername;
+$DB_USER = $username;
+$DB_PASS = $password;
+$DB_NAME = $dbname;
+$database = $dbname;
+
 /************************************************************
  * MSJOBS — Apply (Responsive + Premium UI)
  * - Saves company_id
@@ -10,9 +17,9 @@ session_start();
 
 /* ===== DB CONFIG ===== */
 $DB_HOST = "127.0.0.1:3306";
-$DB_USER = "u903588615_root";
-$DB_PASS = "Msjobs#1";
-$DB_NAME = "u903588615_exaple";
+// $DB_USER = "u903588615_root"; (Refactored to config.php)
+// $DB_PASS = "Msjobs#1"; (Refactored to config.php)
+// $DB_NAME = "u903588615_exaple"; (Refactored to config.php)
 
 /* ===== UPLOAD CONFIG ===== */
 $UPLOAD_DIR           = __DIR__ . "/uploads/cvs";

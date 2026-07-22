@@ -1,4 +1,11 @@
 <?php
+require_once __DIR__ . '/config.php';
+$DB_HOST = $servername;
+$DB_USER = $username;
+$DB_PASS = $password;
+$DB_NAME = $dbname;
+$database = $dbname;
+
 /************************************************************
  * MSJOBS — Job Listings (Indeed-style) with Reliable Logos
  * Single file (all-jobs.php). Alpine.js for micro-interactions.
@@ -15,11 +22,11 @@ define('LOGO_PUBLIC', 'uploads/logos');                      // public web path 
 define('LOGO_PLACEHOLDER', 'img/company-placeholder.png');   // fallback image
 
 /* ==== DB CONFIG ==== */
-$DB_HOST = "127.0.0.1";
+// $DB_HOST = "127.0.0.1"; (Refactored to config.php)
 $DB_PORT = 3306;
-$DB_USER = "u903588615_root";
-$DB_PASS = "Msjobs#1";
-$DB_NAME = "u903588615_exaple";
+// $DB_USER = "u903588615_root"; (Refactored to config.php)
+// $DB_PASS = "Msjobs#1"; (Refactored to config.php)
+// $DB_NAME = "u903588615_exaple"; (Refactored to config.php)
 
 /* ==== CONNECT ==== */
 $mysqli = @new mysqli($DB_HOST . ":" . $DB_PORT, $DB_USER, $DB_PASS, $DB_NAME);

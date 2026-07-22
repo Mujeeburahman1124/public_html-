@@ -20,7 +20,7 @@ function verify_csrf_token(?string $t): void {
 class DatabaseManager {
   private $conn;
   public function __construct() {
-    $this->conn = new mysqli("127.0.0.1:3306","u903588615_root","Msjobs#1","u903588615_exaple");
+    require __DIR__ . '/config.php'; $this->conn = $conn; // $this->conn = new mysqli("127.0.0.1:3306","u903588615_root","Msjobs#1","u903588615_exaple");
     if ($this->conn->connect_error) throw new Exception("Database connection failed: ".$this->conn->connect_error);
     $this->conn->set_charset("utf8mb4");
   }

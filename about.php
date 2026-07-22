@@ -4,7 +4,6 @@ include 'config.php';
 
 // Fetch latest 5 blog posts
 $blog_result = $conn->query("SELECT title, image, content FROM blogs ORDER BY created_at DESC LIMIT 5");
-$video_result = $conn->query("SELECT title, video_link, thumbnail FROM videos ORDER BY created_at DESC LIMIT 3");
 ?>
 
 <!DOCTYPE html>
@@ -133,10 +132,9 @@ $video_result = $conn->query("SELECT title, video_link, thumbnail FROM videos OR
         <h2 class="mb-5">Latest Videos</h2>
         <div class="row">
             <?php
-            // Connect to database
-            $conn = new mysqli("localhost", "root", "", "exaple");
-            if ($conn->connect_error) {
-                echo "<p class='text-red-500'>Database connection failed: " . htmlspecialchars($conn->connect_error) . "</p>";
+            // Use existing $conn from config.php
+            if (!$conn || $conn->connect_error) {
+                echo "<p class='text-red-500'>Database connection failed.</p>";
             } else {
                 $result = $conn->query("SELECT title, description, video_path, uploaded_at FROM videos ORDER BY uploaded_at DESC LIMIT 3");
 
@@ -159,7 +157,6 @@ $video_result = $conn->query("SELECT title, video_link, thumbnail FROM videos OR
                 else:
                     echo "<p>No videos found.</p>";
                 endif;
-                $conn->close();
             }
             ?>
         </div>

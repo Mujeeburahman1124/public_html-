@@ -1,4 +1,14 @@
 <?php
+require_once __DIR__ . '/config.php';
+if (!defined('DB_HOST')) define('DB_HOST', $servername);
+if (!defined('DB_USER')) define('DB_USER', $username);
+if (!defined('DB_PASS')) define('DB_PASS', $password);
+if (!defined('DB_NAME')) define('DB_NAME', $dbname);
+if (!defined('DB_PORT')) {
+    $port_parts = explode(':', $servername);
+    define('DB_PORT', isset($port_parts[1]) ? (int)$port_parts[1] : 3306);
+}
+
 /************************************************************
  * MSJOBS — Employer Applications (Back btn + Message Popup)
  * File: view-applications.php
@@ -11,10 +21,10 @@ require __DIR__ . '/vendor/autoload.php';
 session_start();
 
 /* ====================== CONFIG ======================= */
-const DB_HOST = '127.0.0.1:3306';
-const DB_USER = 'u903588615_root';
-const DB_PASS = 'Msjobs#1';
-const DB_NAME = 'u903588615_exaple';
+// const DB_HOST = '127.0.0.1:3306'; (Refactored to config.php)
+// const DB_USER = 'u903588615_root'; (Refactored to config.php)
+// const DB_PASS = 'Msjobs#1'; (Refactored to config.php)
+// const DB_NAME = 'u903588615_exaple'; (Refactored to config.php)
 
 const SMTP_HOST = 'smtp.gmail.com';
 const SMTP_PORT = 587;

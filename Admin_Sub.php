@@ -1,4 +1,11 @@
 <?php
+require_once __DIR__ . '/config.php';
+$DB_HOST = $servername;
+$DB_USER = $username;
+$DB_PASS = $password;
+$DB_NAME = $dbname;
+$database = $dbname;
+
 // session_start();
 // if (!isset($_SESSION['admin_logged_in'])) {
 //     header("Location: admin_login.php");
@@ -6,10 +13,10 @@
 // }
 
 // DB Connection
-$servername = "127.0.0.1";
-$username = "u903588615_root";
-$password = "Msjobs#1";
-$database = "u903588615_exaple";
+// $servername = "127.0.0.1"; (Refactored to config.php)
+// $username = "u903588615_root"; (Refactored to config.php)
+// $password = "Msjobs#1"; (Refactored to config.php)
+// $database = "u903588615_exaple"; (Refactored to config.php)
 
 $conn = new mysqli($servername, $username, $password, $database);
 if ($conn->connect_error) {

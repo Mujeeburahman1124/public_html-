@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if (!move_uploaded_file($videoTmpName, $videoDestination)) {
                 $message = ["type" => "error", "text" => "Failed to move uploaded file."];
             } else {
-               $conn = new mysqli("127.0.0.1:3306", "u903588615_root", "Msjobs#1", "u903588615_exaple");
+               require_once __DIR__ . '/config.php'; // $conn = new mysqli("127.0.0.1:3306", "u903588615_root", "Msjobs#1", "u903588615_exaple");
 
                 if ($conn->connect_error) {
                     $message = ["type" => "error", "text" => "Connection failed: " . $conn->connect_error];
