@@ -7,10 +7,14 @@
  */
 declare(strict_types=1);
 
+require_once __DIR__ . '/config.php';
+$host_parts = explode(':', $servername);
+$DB_HOST_ONLY = $host_parts[0];
+$DB_PORT = isset($host_parts[1]) ? (int)$host_parts[1] : 3306;
 $pdo = new PDO(
-    'mysql:host=127.0.0.1;port=3306;dbname=u903588615_exaple;charset=utf8mb4',
-    'u903588615_root',
-    'Msjobs#1',
+    "mysql:host=$DB_HOST_ONLY;port=$DB_PORT;dbname=$dbname;charset=utf8mb4",
+    $username,
+    $password,
     [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
 );
 

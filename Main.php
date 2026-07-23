@@ -7,21 +7,23 @@
  */
 declare(strict_types=1);
 session_start();
+require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/settings_helper.php';
 
 function h(?string $s): string { return htmlspecialchars((string)$s, ENT_QUOTES, 'UTF-8'); }
 function notEmpty($v): bool { return isset($v) && $v !== '' && $v !== null; }
 
 /* ===== DB CONFIG ===== */
-$DB_HOST = "127.0.0.1";
-$DB_PORT = 3306;
-$DB_USER = "u903588615_root";
-$DB_PASS = "Msjobs#1";
-$DB_NAME = "u903588615_exaple";
+$host_parts = explode(':', $servername);
+$DB_HOST_ONLY = $host_parts[0];
+$DB_PORT = isset($host_parts[1]) ? (int)$host_parts[1] : 3306;
+$DB_USER = $username;
+$DB_PASS = $password;
+$DB_NAME = $dbname;
 
 /* ===== Connect PDO ===== */
 try {
-  $pdo = new PDO("mysql:host=$DB_HOST;port=$DB_PORT;dbname=$DB_NAME;charset=utf8mb4", $DB_USER, $DB_PASS, [
+  $pdo = new PDO("mysql:host=$DB_HOST_ONLY;port=$DB_PORT;dbname=$DB_NAME;charset=utf8mb4", $DB_USER, $DB_PASS, [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
   ]);

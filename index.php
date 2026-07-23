@@ -7,6 +7,7 @@
  */
 declare(strict_types=1);
 session_start();
+require_once __DIR__ . '/config.php';
 require_once __DIR__ . '/settings_helper.php';
 
 /* ------------------- helpers ------------------- */
@@ -14,16 +15,17 @@ function h(?string $s): string { return htmlspecialchars((string)$s, ENT_QUOTES,
 function numOrNull($v){ return is_numeric($v) ? (0 + $v) : null; }
 
 /* ===== DB CONFIG ===== */
-$DB_HOST = "127.0.0.1";
-$DB_PORT = 3306;
-$DB_USER = "u903588615_root";
-$DB_PASS = "Msjobs#1";
-$DB_NAME = "u903588615_exaple";
+$host_parts = explode(':', $servername);
+$DB_HOST_ONLY = $host_parts[0];
+$DB_PORT = isset($host_parts[1]) ? (int)$host_parts[1] : 3306;
+$DB_USER = $username;
+$DB_PASS = $password;
+$DB_NAME = $dbname;
 
 /* ===== Connect PDO ===== */
 try {
   $pdo = new PDO(
-    "mysql:host=$DB_HOST;port=$DB_PORT;dbname=$DB_NAME;charset=utf8mb4",
+    "mysql:host=$DB_HOST_ONLY;port=$DB_PORT;dbname=$DB_NAME;charset=utf8mb4",
     $DB_USER,
     $DB_PASS,
     [
