@@ -1,6 +1,10 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 // config.php must include $conn = new mysqli(...) to connect to DB
-include 'config.php';
+require_once __DIR__ . '/config.php';
 
 // Fetch latest 5 blog posts
 $blog_result = $conn->query("SELECT title, image, content FROM blogs ORDER BY created_at DESC LIMIT 5");
