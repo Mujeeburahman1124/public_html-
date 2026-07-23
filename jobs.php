@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 require_once __DIR__ . '/config.php';
 $DB_HOST = $servername;
 $DB_USER = $username;
@@ -12,7 +13,6 @@ $database = $dbname;
  * - FIX: auto-detect logo column (logo | logos | company_logo)
  ************************************************************/
 
-declare(strict_types=1);
 ini_set('display_errors', '1'); // turn off in production
 error_reporting(E_ALL);
 

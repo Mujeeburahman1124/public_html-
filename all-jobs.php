@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 require_once __DIR__ . '/config.php';
 $DB_HOST = $servername;
 $DB_USER = $username;
@@ -16,7 +17,6 @@ $database = $dbname;
  * - Filters: DISTINCT from DB over approved jobs
  * - Show-all: &all=1 (no pagination, when not solo)
  ************************************************************/
-declare(strict_types=1);
 session_start();
 
 ini_set('display_errors','1'); // turn off in production
