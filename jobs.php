@@ -42,15 +42,10 @@ function h(?string $s): string { return htmlspecialchars($s ?? '', ENT_QUOTES | 
 /** Detect which logo column exists in `jobs` table. */
 function detectLogoColumn(mysqli $db, string $schema, string $table = 'jobs'): ?string {
   $candidates = ['logo','logos','company_logo'];
-  $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS
-          WHERE TABLE_SCHEMA = ? AND TABLE_NAME = ? AND COLUMN_NAME IN ('logo','logos','company_logo')";
-  $stmt = $db->prepare($sql);
-  $stmt->bind_param('ss', $schema, $table);
-  $stmt->execute();
-  $res = $stmt->get_result();
+  $res = $db->query("SHOW COLUMNS FROM `$table`");
+  if ($res === false) return null;
   $found = [];
-  while ($r = $res->fetch_assoc()) $found[] = $r['COLUMN_NAME'];
-  $stmt->close();
+  while ($r = $res->fetch_assoc()) $found[] = $r['Field'];
   // Keep stable priority: logo > logos > company_logo
   foreach ($candidates as $c) if (in_array($c, $found, true)) return $c;
   return null;

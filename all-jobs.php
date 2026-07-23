@@ -60,16 +60,10 @@ function resolveLogoUrl(?string $logo): string {
 }
 function detectLogoColumn(mysqli $db, string $schema, string $table='jobs'): ?string {
   $candidates = ['logo','logos','company_logo'];
-  $in = "'".implode("','",$candidates)."'";
-  $sql = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS
-          WHERE TABLE_SCHEMA=? AND TABLE_NAME=? AND COLUMN_NAME IN ($in)";
-  $st = $db->prepare($sql);
-  $st->bind_param('ss',$schema,$table);
-  $st->execute();
-  $res = $st->get_result();
+  $res = $db->query("SHOW COLUMNS FROM `$table`");
+  if ($res === false) return null;
   $found = [];
-  while($r=$res->fetch_assoc()) $found[]=$r['COLUMN_NAME'];
-  $st->close();
+  while($r=$res->fetch_assoc()) $found[]=$r['Field'];
   foreach($candidates as $c) if(in_array($c,$found,true)) return $c;
   return null;
 }
