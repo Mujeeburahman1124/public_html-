@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 require_once __DIR__ . '/config.php';
 if (!defined('DB_HOST')) define('DB_HOST', $servername);
 if (!defined('DB_USER')) define('DB_USER', $username);
@@ -16,7 +17,6 @@ if (!defined('DB_PORT')) {
  * - Uploader (AJAX JSON): name, email, national_id, contact_number, resume
  * - Manager: search, paginate, download, delete
  ************************************************************/
-declare(strict_types=1);
 session_start();
 
 /* ================== CONFIG (edit as needed) ================== */

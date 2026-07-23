@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 require_once __DIR__ . '/config.php';
 $DB_HOST = $servername;
 $DB_USER = $username;
@@ -12,7 +13,7 @@ $database = $dbname;
  * Fix: Favorites never leak HTML (strict JSON), work even if not logged in (uid=0),
  *      removed Alerts & Peers’ Favorites, added full job view modal.
  ************************************************************/
-declare(strict_types=1);
+
 
 /* ===== 0) STRICT HEADERS ===== */
 header_remove('X-Powered-By');

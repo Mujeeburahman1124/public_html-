@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 require_once __DIR__ . '/config.php';
 $DB_HOST = $servername;
 $DB_USER = $username;
@@ -12,7 +13,6 @@ $database = $dbname;
  * - Auto-fetches company name from job or company tables
  * - Safe file upload (PDF/DOC/DOCX, ≤ 5MB)
  ************************************************************/
-declare(strict_types=1);
 session_start();
 
 /* ===== DB CONFIG ===== */

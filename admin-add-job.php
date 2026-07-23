@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 require_once __DIR__ . '/config.php';
 if (!defined('DB_HOST')) define('DB_HOST', $servername);
 if (!defined('DB_USER')) define('DB_USER', $username);
@@ -20,7 +21,6 @@ if (!defined('DB_PORT')) {
  * - FIX: Currency prefix uses fixed-width box to prevent alignment shifts
  **************************************************************/
 
-declare(strict_types=1);
 session_start();
 
 /** ====== CONFIG ====== */

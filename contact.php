@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 require_once __DIR__ . '/config.php';
 if (!defined('DB_HOST')) define('DB_HOST', $servername);
 if (!defined('DB_USER')) define('DB_USER', $username);
@@ -16,7 +17,6 @@ if (!defined('DB_PORT')) {
  * - CSRF, validation, rate limit
  * - Saves to DB + emails Support + auto-replies to sender
  ************************************************************/
-declare(strict_types=1);
 session_start();
 require_once __DIR__ . '/settings_helper.php';
 

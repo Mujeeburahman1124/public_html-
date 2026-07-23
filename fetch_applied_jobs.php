@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 require_once __DIR__ . '/config.php';
 $DB_HOST = $servername;
 $DB_USER = $username;
@@ -12,7 +13,6 @@ $database = $dbname;
  * Tech: PHP + MySQLi + Bootstrap 5 (icons)
  * Features: search, left filters, sort, pagination (client-side)
  ************************************************************/
-declare(strict_types=1);
 session_start();
 
 /* ===== 0) DB CONNECT ===== */

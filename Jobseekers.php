@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 require_once __DIR__ . '/config.php';
 if (!defined('DB_HOST')) define('DB_HOST', $servername);
 if (!defined('DB_USER')) define('DB_USER', $username);
@@ -16,8 +17,6 @@ if (!defined('DB_PORT')) {
  * - Modern list → profile viewer (CV preview + download)
  * - View limits per employer (unique views counted)
  **************************************************************/
-
-declare(strict_types=1);
 session_start();
 
 /* ===== Session guard ===== */

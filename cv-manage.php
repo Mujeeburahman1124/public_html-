@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 require_once __DIR__ . '/config.php';
 if (!defined('DB_HOST')) define('DB_HOST', $servername);
 if (!defined('DB_USER')) define('DB_USER', $username);
@@ -12,7 +13,6 @@ if (!defined('DB_PORT')) {
 /************************************************************
  * MSJOBS — Manage CVs (cv_candidates)
  ************************************************************/
-declare(strict_types=1);
 session_start();
 
 ini_set('display_errors','0');
