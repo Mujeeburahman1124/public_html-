@@ -32,13 +32,20 @@ define('LOGO_PLACEHOLDER','img/new-company-placeholder.png');
 
 /* ==== DB ==== */
 // $DB_HOST = "127.0.0.1"; (Refactored to config.php)
-$DB_PORT = 3306;
+$host_parts = explode(':', (string)$DB_HOST);
+$DB_HOST_ONLY = $host_parts[0];
+$DB_PORT = isset($host_parts[1]) ? (int)$host_parts[1] : 3306;
 // $DB_USER = "u903588615_root"; (Refactored to config.php)
 // $DB_PASS = "Msjobs#1"; (Refactored to config.php)
 // $DB_NAME = "u903588615_exaple"; (Refactored to config.php)
 
 /* ==== CONNECT ==== */
-$mysqli = @new mysqli($DB_HOST.":".$DB_PORT, $DB_USER, $DB_PASS, $DB_NAME);
+try {
+  $mysqli = @new mysqli($DB_HOST_ONLY, $DB_USER, $DB_PASS, $DB_NAME, $DB_PORT);
+} catch (mysqli_sql_exception $e) {
+  http_response_code(500);
+  die('Database connection failed.');
+}
 if ($mysqli->connect_error) { http_response_code(500); die('Database connection failed.'); }
 $mysqli->set_charset('utf8mb4');
 
